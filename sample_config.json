@@ -1,0 +1,53 @@
+{
+    "build_server_url": "http://localhost:1880/",
+    "tts_lang": "sk",
+    "builds": [
+        {
+            "build_type_id": "FcsGrundsatz_FcsDevicesQtFrontendSuite_Trunk_Documentation",
+            "branch": "master",
+            "tts_name": "ap kor dokumentacia",
+            "gui_name": "AppCore docu"
+        },
+        {
+            "build_type_id": "FcsGrundsatz_FcsDevicesQtFrontendSuite_Trunk_AppcoreLib_BuildWin32",
+            "branch": "master",
+            "tts_name": "AppCore Win32",
+            "gui_name": "AppCore Win32"
+        },
+        {
+            "build_type_id": "FcsGrundsatz_FcsDevicesQtFrontendSuite_Trunk_AppcoreLib_BuildWin32",
+            "branch": "master",
+            "tts_name": "AppCore Win32",
+            "gui_name": "AppCore"
+        },
+        {
+            "build_type_id": "FcsGrundsatz_FcsDevicesQtFrontendSuite_Trunk_AppcoreLib_BuildWin32",
+            "branch": "master",
+            "tts_name": "AppCore Win32",
+            "gui_name": "AppCore fvfd dfvd"
+        },
+        {
+            "build_type_id": "FcsGrundsatz_FcsDevicesQtFrontendSuite_Trunk_AppcoreLib_BuildWin32",
+            "branch": "master",
+            "tts_name": "AppCore Win32",
+            "gui_name": "AppCore ad df"
+        },
+        {
+            "build_type_id": "FcsGrundsatz_FcsDevicesQtFrontendSuite_Trunk_AppcoreLib_BuildWin32",
+            "branch": "master",
+            "tts_name": "AppCore Win32",
+            "gui_name": "AppCore fv fvdfvd dbg"
+        }
+    ],
+    "users": [
+        {
+            "team_city_name": "Pavel Hromada",
+            "tts_name": "Pavel Hromada"
+        }
+    ],
+    "tts_messages": {
+        "you_broke_build": "rozbil si bild",
+        "build_success_again": "je zas v poriadku",
+        "build_ongoing": "prave prebieha build"
+    }
+}
