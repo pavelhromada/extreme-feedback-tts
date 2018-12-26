@@ -65,13 +65,11 @@ class AudioPresenter( BuildStatusPresenter ):
         if not info.status_has_changed():
             return
 
-        # play build name
-
         if info.status() == BuildStatus.Success:
-            pass # play status_ok_again
+            pass # play build name + status_ok_again
         elif info.status() == BuildStatus.Failed:
-            pass # play status_nok + committer name + you_broke_build
+            pass # play build name + status_nok + committer name + you_broke_build
         elif info.status() == BuildStatus.Running:
-            pass # play status_sunning + committer name + you_committed
+            pass # play build name + status_sunning + committer name + you_committed
         else:
-            pass # play status_unavailable
+            pass # play status_unavailable + build name

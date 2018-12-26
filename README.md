@@ -72,9 +72,16 @@ Sample configuration:
         }
     ],
     "tts_messages": {
-        "you_broke_build": "you broke build",
-        "build_success_again": "build is okay again. Thanks God.",
-        "build_ongoing": "is building. I hope everything will be okay."
+        "status_all_unavailable": "I have issues to retrieve info about builds. Put an eye on it.",
+        "status_all_ok": "All builds are building successfully. Keep it like this.",
+        "status_all_ok_long_time": "Everything is fine for a long time. Thumbs up guys.",
+        "status_all_nok_long_time": "Houston, we have a proble for some time. Check it immediately.",
+        "status_unavailable": "Unable to get info about",
+        "status_ok_again": "is okay again.",
+        "status_nok": "build has failed.",
+        "status_running": "build is running right now on build server.",
+        "you_broke_build": "you broke the build. Fix it now dude.",
+        "you_committed": "hope that thi will pass."
     }
 }
 ```
