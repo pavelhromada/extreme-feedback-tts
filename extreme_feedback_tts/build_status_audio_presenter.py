@@ -6,6 +6,7 @@ from .build_status_presenter import BuildStatusPresenter
 from .audiodownloader import AudioDownloader
 from .audioplayer import AudioPlayer
 
+
 class AudioPresenter( BuildStatusPresenter ):
     '''Presents builds status via audio output.'''
 
@@ -18,7 +19,6 @@ class AudioPresenter( BuildStatusPresenter ):
         audio.download_users_names( config.users() )
         audio.download_builds_names( config.builds() )
         audio.download_messages( config.tts_messages() )
-
 
     def update( self, build_statuses ):
         logging.debug( 'Updating audio status ...' )

@@ -6,6 +6,7 @@ import argparse
 import logging
 from extreme_feedback_tts import ExtremeFeedbackApp
 
+
 def parse_arguments():
     ap = argparse.ArgumentParser()
 
@@ -22,23 +23,24 @@ def parse_arguments():
                      help = 'show GUI in fullscreen mode (if GUI is requested)',
                      action = 'store_true',
                      default = False )
+    ap.add_argument( '-d', '--debug',
+                     required = False,
+                     help = 'enable debug logs',
+                     action = 'store_true',
+                     default = False )
     
     return vars( ap.parse_args() )
 
-
-def configure_logging():
-    # logging.basicConfig( level = logging.DEBUG )
-    # logging.basicConfig( format = '%(message)s' )
-    pass
+def configure_logging( enable_logs ):
+    if enable_logs:
+        logging.basicConfig( level = logging.INFO )
+    else:
+        logging.disable( sys.maxsize )
 
 
 if __name__ == "__main__":
-    configure_logging()
     args = parse_arguments()
-
-    if not args[ 'config' ]:
-        logging.warning( 'Config JSON file not provided. Exit.' )
-        exit( 1 )
+    configure_logging( args[ 'debug' ])
 
     app = ExtremeFeedbackApp( args[ 'config' ],
                               args[ 'gui' ],

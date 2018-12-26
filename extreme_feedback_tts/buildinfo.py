@@ -23,27 +23,21 @@ class BuildInfo:
         self._status_url = f'{base_url}guestAuth/app/rest/builds?{builds_locator}'
         self._committer_url = f'{base_url}guestAuth/app/rest/changes?{changes_locator}'
 
-
     def reload( self ):
         self._refresh_build_status()
         self._refresh_last_commiter_name()
 
-
     def status( self ):
         return self._status
-
 
     def last_commit_by( self ):
         return self._committer
 
-
     def brach( self ):
         return self._config[ 'branch' ]
 
-    
     def gui_name( self ):
         return self._config[ 'gui_name' ]
-
 
     def _refresh_build_status( self ):
         try:
@@ -61,7 +55,6 @@ class BuildInfo:
         except requests.exceptions.RequestException:
             self._status = BuildStatus.Unavailable
             logging.exception( 'Error obtaining build status' )
-
 
     def _refresh_last_commiter_name( self ):
         try:

@@ -9,6 +9,7 @@ from .buildinfo import BuildInfo
 from .build_status_audio_presenter import AudioPresenter
 from .build_status_gui_presenter import GuiPresenter
 
+
 class ExtremeFeedbackApp:
     '''Entry point to extreme feedback application.'''
 
@@ -19,13 +20,11 @@ class ExtremeFeedbackApp:
         self._builds_info   = []
         self._presenters    = []
 
-
     def run( self ):
         try:
             self._run_internal()
         except KeyboardInterrupt:
             logging.debug( 'Application exit.' )
-
 
     def _run_internal( self ):
         if not self._config_path:

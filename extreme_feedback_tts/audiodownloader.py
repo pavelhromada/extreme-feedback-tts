@@ -8,7 +8,7 @@ from pydub import AudioSegment
 
 
 class AudioDownloader:
-    '''Downloads audio texts in for of mp3 files, which will be used in particular situations.'''
+    '''Downloads audio texts in form of mp3 files, which will be used in particular situations.'''
 
     def __init__( self, out_dir, lang, replace_if_exists = False ):
         self._out_dir           = out_dir

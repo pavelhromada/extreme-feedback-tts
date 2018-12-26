@@ -23,7 +23,6 @@ class StatusPanel( Canvas ):
         self._branch_name_object = None
 
         self._draw_scene()
-        
 
     def set_status( self, status ):
         if not BuildStatus.has_value( status ):
@@ -32,21 +31,17 @@ class StatusPanel( Canvas ):
         if self._indicator_object:
             self.itemconfig( self._indicator_object, fill = self._indicator_color() )
 
-
     def set_build_name( self, name ):
         self._build_name = name
         self.itemconfig( self._build_name_object, text = name )
-
 
     def set_last_commiter( self, name ):
         self._last_commiter = name
         self.itemconfig( self._commiter_object, text = 'Last commit: ' + name )
 
-
     def set_branch_name( self, name ):
         self._build_name = name
         self.itemconfig( self._branch_name_object, text = 'Branch: ' + name )
-
 
     def _draw_scene( self ):
         corner_length = int( min( self._width, self._height ) * 0.15 )
@@ -86,7 +81,6 @@ class StatusPanel( Canvas ):
                                                   anchor = NW,
                                                   width = self._width - 2 * in_padding,
                                                   text = 'Branch: ' + self._branch_name )
-
 
     def _indicator_color( self ):
         if self._status == BuildStatus.Success:

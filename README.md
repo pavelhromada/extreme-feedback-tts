@@ -9,12 +9,13 @@ on its definition watches all the builds defined in it.
 # Usage
 
 ```
-run.py -c path-to-config-json-fie [-g] [-f]
+run.py -c path-to-config-json-fie [-g] [-f] [-d]
 
 arguments:
   -c, --config          path to config file JSON
   -g, --gui             show also GUI
   -f, --fullscreen      show GUI in fullscreen mode (if GUI is requested)
+  -d, --debug           enable debug logs
 ```
 
 # Dependencies

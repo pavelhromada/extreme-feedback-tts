@@ -3,6 +3,7 @@
 
 from enum import Enum
 
+
 class BuildStatus( Enum ):
     Success     = 1
     Failed      = 2

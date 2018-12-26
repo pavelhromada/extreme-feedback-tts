@@ -20,7 +20,6 @@ class GuiPresenter( BuildStatusPresenter ):
         self._tk.protocol( 'WM_DELETE_WINDOW', lambda: None )
         self._tk.update_idletasks()
         self._panels = []
-        
 
     def update( self, build_infos ):
         logging.debug( 'Updating GUI ...' )
@@ -35,7 +34,6 @@ class GuiPresenter( BuildStatusPresenter ):
             panel.set_branch_name( info.brach() )
 
         self._tk.update()
-
 
     def _create_panels( self, count, max_columns ):
         scene_width  = self._tk.winfo_width()
