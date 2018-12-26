@@ -5,7 +5,7 @@ import os
 import time
 import logging
 from .configuration import Configuration
-from .buildinfo import BuildInfo
+from .build_info import BuildInfo
 from .build_status_audio_presenter import AudioPresenter
 from .build_status_gui_presenter import GuiPresenter
 

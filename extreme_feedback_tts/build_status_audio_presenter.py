@@ -3,8 +3,8 @@
 
 import logging
 from .build_status_presenter import BuildStatusPresenter
-from .audiodownloader import AudioDownloader
-from .audioplayer import AudioPlayer
+from .audio_downloader import AudioDownloader
+from .audio_player import AudioPlayer
 
 
 class AudioPresenter( BuildStatusPresenter ):
