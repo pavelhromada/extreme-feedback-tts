@@ -1,4 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import os
+import logging
 import simpleaudio as sa
 
 
@@ -13,7 +17,7 @@ class AudioPlayer:
         for dirpath, _, files in os.walk( path ):
             for filename in [f for f in files if f.endswith( '.wav' )]:
                 self._play( os.path.join( dirpath, filename ))
-                print( f'played {filename}' )
+                logging.debug( f'Playback of {filename} stopped' )
 
 
     def _play( self, audio_file_path ):

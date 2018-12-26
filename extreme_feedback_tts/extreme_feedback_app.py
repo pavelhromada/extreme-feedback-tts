@@ -1,5 +1,9 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import os
 import time
+import logging
 from .configuration import Configuration
 from .buildinfo import BuildInfo
 from .build_status_audio_presenter import AudioPresenter
@@ -20,15 +24,15 @@ class ExtremeFeedbackApp:
         try:
             self._run_internal()
         except KeyboardInterrupt:
-            print( '\nApplication exit.' )
+            logging.debug( 'Application exit.' )
 
 
     def _run_internal( self ):
         if not self._config_path:
-            print( 'No config path provided. Exit.' )
+            logging.warning( 'No config path provided. Exit.' )
             return
 
-        print( f'Loading config [{self._config_path}] ...' )
+        logging.debug( f'Loading config {self._config_path} ...' )
         config = Configuration( self._config_path )
 
         if self._show_gui:
@@ -39,7 +43,7 @@ class ExtremeFeedbackApp:
         for build_config in config.builds():
             self._builds_info.append( BuildInfo( config.build_server_url(), build_config ))
 
-        print( 'Starting application loop ...' )
+        logging.debug( 'Starting application loop ...' )
 
         while True:
             for build in self._builds_info:

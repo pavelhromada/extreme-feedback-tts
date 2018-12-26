@@ -1,4 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import os
+import logging
 from gtts import gTTS
 from pydub import AudioSegment
 
@@ -15,35 +19,35 @@ class AudioDownloader:
     def download_users_names( self, users ):
         base_path = os.path.join( self._out_dir, 'users' )
         os.makedirs( base_path, exist_ok = True )
-        print( f'Creating user names audio files in {base_path}' )
+        logging.debug( f'Creating user names audio files in {base_path}' )
         
         for user in users:
             user_name = user[ 'team_city_name' ].replace( ' ', '' )
             self._download_audio( user[ 'tts_name' ], base_path, user_name )
         
-        print( '   > Audio files of users created' )
+        logging.debug( 'Audio files of users created' )
 
     
     def download_builds_names( self, builds ):
         base_path = os.path.join( self._out_dir, 'builds' )
         os.makedirs( base_path, exist_ok = True )
-        print( f'Creating build names audio files in {base_path}' )
+        logging.debug( f'Creating build names audio files in {base_path}' )
 
         for build in builds:
             self._download_audio( build[ 'tts_name' ], base_path, build[ 'build_type_id' ] )
         
-        print( '   > Audio files of build names created' )
+        logging.debug( 'Audio files of build names created' )
 
 
     def download_messages( self, messages ):
         base_path = os.path.join( self._out_dir, 'messages' )
         os.makedirs( base_path, exist_ok = True )
-        print( f'Creating custom messages audio files in {base_path}' )
+        logging.debug( f'Creating custom messages audio files in {base_path}' )
 
         for id, text in messages.items():
             self._download_audio( text, base_path, id )
         
-        print( '   > Audio files of custom messages created' )
+        logging.debug( 'Audio files of custom messages created' )
 
 
     def _download_audio( self, text, path, file_name ):
@@ -52,7 +56,7 @@ class AudioDownloader:
 
         if not self._replace_if_exists and os.path.isfile( wav ):
             cropped = '...' + os.sep + os.sep.join( wav.split( os.sep )[-4:] )
-            print( f'Audio file already exists "{cropped}"' )
+            logging.debug( f'Audio file already exists "{cropped}"' )
             return None
 
         # create and download mp3 TTS audio file

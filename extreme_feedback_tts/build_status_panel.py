@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 from tkinter import Canvas, NW
 from .build_status_enum import BuildStatus
@@ -80,7 +81,7 @@ class StatusPanel( Canvas ):
                                                      width = self._width - 2 * in_padding,
                                                      text = 'Last commit: ' + self._last_commiter )
         self._commiter_object = self.create_text( in_padding,
-                                                  self._height * 0.85,
+                                                  self._height * 0.8,
                                                   fill = '#777',
                                                   anchor = NW,
                                                   width = self._width - 2 * in_padding,
@@ -89,8 +90,10 @@ class StatusPanel( Canvas ):
 
     def _indicator_color( self ):
         if self._status == BuildStatus.Success:
-            return 'green'
+            return '#4e9525'#'#729d39'
         elif self._status == BuildStatus.Failed:
-            return 'red'
+            return '#ce2525'#'#8f1d14'
+        elif self._status == BuildStatus.Running:
+            return '#f89d13'
         else:
-            return 'orange'
+            return '#3e3838'

@@ -1,7 +1,11 @@
-from .build_status_presenter import BuildStatusPresenter
-from .build_status_panel import StatusPanel
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import logging
 from math import sqrt, ceil
 from tkinter import Tk, Canvas, YES, BOTH
+from .build_status_presenter import BuildStatusPresenter
+from .build_status_panel import StatusPanel
 
 
 class GuiPresenter( BuildStatusPresenter ):
@@ -19,7 +23,8 @@ class GuiPresenter( BuildStatusPresenter ):
         
 
     def update( self, build_infos ):
-        print( 'Updating GUI ...' )
+        logging.debug( 'Updating GUI ...' )
+        
         if not self._panels:
             self._create_panels( len( build_infos ), 5 ) # max 5 columns
 
@@ -28,7 +33,7 @@ class GuiPresenter( BuildStatusPresenter ):
             panel.set_build_name( info.gui_name() )
             panel.set_last_commiter( info.last_commit_by() )
             panel.set_branch_name( info.brach() )
-            
+
         self._tk.update()
 
 

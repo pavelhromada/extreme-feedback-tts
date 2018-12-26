@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 import sys
 import argparse
+import logging
 from extreme_feedback_tts import ExtremeFeedbackApp
 
 def parse_arguments():
@@ -24,10 +26,18 @@ def parse_arguments():
     return vars( ap.parse_args() )
 
 
+def configure_logging():
+    # logging.basicConfig( level = logging.DEBUG )
+    # logging.basicConfig( format = '%(message)s' )
+    pass
+
+
 if __name__ == "__main__":
+    configure_logging()
     args = parse_arguments()
+
     if not args[ 'config' ]:
-        print( 'Config JSON file not provided. Exit.' )
+        logging.warning( 'Config JSON file not provided. Exit.' )
         exit( 1 )
 
     app = ExtremeFeedbackApp( args[ 'config' ],
