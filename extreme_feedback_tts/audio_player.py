@@ -12,6 +12,15 @@ class AudioPlayer:
     def __init__( self ):
         pass
 
+    def clear_playlist( self ):
+        pass # TODO
+
+    def add_to_playlist( self, audio_paths ):
+        pass # TODO
+
+    def play_playlist( self ):
+        pass # TODO
+
     def play_all_from_path( self, path ):
         for dirpath, _, files in os.walk( path ):
             for filename in [f for f in files if f.endswith( '.wav' )]:

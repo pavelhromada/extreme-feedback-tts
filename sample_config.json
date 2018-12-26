@@ -46,8 +46,15 @@
         }
     ],
     "tts_messages": {
-        "you_broke_build": "rozbil si bild",
-        "build_success_again": "je zas v poriadku",
-        "build_ongoing": "prave prebieha build"
+        "status_all_unavailable": "Nedari sa mi ziskat stav o bildoch. Skuste sa na to pozriet.",
+        "status_all_ok": "Vsetky bildy su v poradku. Pokuste sa to tak udrzat.",
+        "status_all_ok_long_time": "Uz dlsiu dobu je vsetko v poriadku. Palec hore pre vsetkych.",
+        "status_all_nok_long_time": "Uz dlsiu dobu mame problem. Skontrolujete to.",
+        "status_unavailable": "Nedari sa mi ziskat stav o bilde",
+        "status_ok_again": "je zas v poriadku.",
+        "status_nok": "bild neprechadza.",
+        "status_running": "sa prave bildi na serveri.",
+        "you_broke_build": "rozbil si bild. Okamzite to oprav.",
+        "you_committed": "dufam, ze si si dal zalezat."
     }
 }

@@ -12,13 +12,13 @@ class StatusPanel( Canvas ):
                           border = 0, background = '#181818', highlightthickness = 0 )
         self._status             = BuildStatus.Success
         self._build_name         = 'AppCore win32'
-        self._last_commiter      = 'Pavel Hromada'
+        self._last_committer     = 'Pavel Hromada'
         self._branch_name        = 'master'
         self._width              = width
         self._height             = height
         self._padding            = 10
         self._indicator_object   = None
-        self._commiter_object    = None
+        self._committer_object   = None
         self._build_name_object  = None
         self._branch_name_object = None
 
@@ -35,9 +35,9 @@ class StatusPanel( Canvas ):
         self._build_name = name
         self.itemconfig( self._build_name_object, text = name )
 
-    def set_last_commiter( self, name ):
-        self._last_commiter = name
-        self.itemconfig( self._commiter_object, text = 'Last commit: ' + name )
+    def set_last_committer( self, name ):
+        self._last_committer = name
+        self.itemconfig( self._committer_object, text = 'Last commit: ' + name )
 
     def set_branch_name( self, name ):
         self._build_name = name
@@ -74,13 +74,13 @@ class StatusPanel( Canvas ):
                                                      fill = '#777',
                                                      anchor = NW,
                                                      width = self._width - 2 * in_padding,
-                                                     text = 'Last commit: ' + self._last_commiter )
-        self._commiter_object = self.create_text( in_padding,
-                                                  self._height * 0.8,
-                                                  fill = '#777',
-                                                  anchor = NW,
-                                                  width = self._width - 2 * in_padding,
-                                                  text = 'Branch: ' + self._branch_name )
+                                                     text = 'Last commit: ' + self._last_committer )
+        self._committer_object = self.create_text( in_padding,
+                                                   self._height * 0.8,
+                                                   fill = '#777',
+                                                   anchor = NW,
+                                                   width = self._width - 2 * in_padding,
+                                                   text = 'Branch: ' + self._branch_name )
 
     def _indicator_color( self ):
         if self._status == BuildStatus.Success:

@@ -1,3 +1,6 @@
+# **WORK IN PROGRESS**
+Proper audio output logic is missing so far.
+
 # extreme-feedback-tts
 
 Yet another extreme feedback "lava lamp". This one is written in python and provides GUI and

@@ -30,7 +30,7 @@ class GuiPresenter( BuildStatusPresenter ):
         for info, panel in zip( build_infos, self._panels ):
             panel.set_status( info.status() )
             panel.set_build_name( info.gui_name() )
-            panel.set_last_commiter( info.last_commit_by() )
+            panel.set_last_committer( info.last_commit_by() )
             panel.set_branch_name( info.brach() )
 
         self._tk.update()
