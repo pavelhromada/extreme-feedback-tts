@@ -9,7 +9,7 @@ on its definition watches all the builds defined in it.
 # Usage
 
 ```
-run.py -c path-to-config-json-fie [-g] [-f] [-d]
+run.py -c path-to-config-json-file [-g] [-f] [-d]
 
 arguments:
   -c, --config          path to config file JSON
