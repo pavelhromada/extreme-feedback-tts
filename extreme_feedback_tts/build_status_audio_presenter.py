@@ -9,7 +9,7 @@ from .build_status_presenter import BuildStatusPresenter
 
 
 class AudioPresenter( BuildStatusPresenter ):
-    '''Presents builds status via audio output.'''
+    '''Presents builds status as audio output.'''
 
     def __init__( self, config ):
         self._config            = config
@@ -17,13 +17,13 @@ class AudioPresenter( BuildStatusPresenter ):
         self._all_ok_counter    = 0
         self._all_nok_counter   = 0
         self._player            = AudioPlayer()
+        self._audio             = AudioDownloader( config.assets_dir(), config.tts_lang() )
 
         logging.debug( 'Audio presenter: Downloading audio files ...' )
 
-        audio = AudioDownloader( config.assets_dir(), config.tts_lang() )
-        audio.download_users_names( config.users() )
-        audio.download_builds_names( config.builds() )
-        audio.download_messages( config.tts_messages() )
+        self._audio.download_users_names( config.users() )
+        self._audio.download_builds_names( config.builds() )
+        self._audio.download_messages( config.tts_messages() )
 
     def update( self, build_statuses ):
         logging.debug( 'Updating audio status ...' )
@@ -34,32 +34,35 @@ class AudioPresenter( BuildStatusPresenter ):
         all_unavailable = all( info.status() == BuildStatus.Unavailable for info in build_statuses )
 
         if all_ok:
-            if self._is_first_update:
+            self._all_nok_counter = 0
+
+            if self._is_first_update or self._all_ok_counter == 0:
                 self._all_ok_counter = 1
-                # play status_all_ok
-            elif self._all_ok_counter == 0:
-                self._all_ok_counter = 1
+                self._player.add_to_playlist( self._audio.filepath_of_status_all_ok() )
                 # play status_all_ok
             elif self._all_ok_counter == 5:
                 self._all_ok_counter = 1
+                self._player.add_to_playlist( self._audio.filepath_of_status_all_ok_long_time() )
                 # play status_all_ok_long_time
             else:
                 self._all_ok_counter += 1
         elif all_unavailable:
             self._all_ok_counter = 0
+            self._all_nok_counter = 0
+            self._player.add_to_playlist( self._audio.filepath_of_status_all_unavailable() )
             # play status_all_unavailable
         else:
             self._all_nok_counter += 1
             if self._all_nok_counter == 5:
-                pass # play status_all_nok_long_time
+                self._player.add_to_playlist( self._audio.filepath_of_status_all_nok_long_time() )
+                self._all_nok_counter = 0
+                # play status_all_nok_long_time
 
             for info in build_statuses:
                 self._process_build_status( info )
 
         self._is_first_update = False
-            
-        # player = AudioPlayer()
-        # player.play_all_from_path( self._config.assets_dir() )
+        self._player.play_playlist()
 
     def _process_build_status( self, info ):
         if not info.status_has_changed():

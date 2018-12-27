@@ -15,7 +15,6 @@ class AudioDownloader:
         self._lang              = lang
         self._replace_if_exists = replace_if_exists
 
-
     def download_users_names( self, users ):
         base_path = os.path.join( self._out_dir, 'users' )
         os.makedirs( base_path, exist_ok = True )
@@ -26,7 +25,6 @@ class AudioDownloader:
             self._download_audio( user[ 'tts_name' ], base_path, user_name )
         
         logging.debug( 'Audio files of users created' )
-
     
     def download_builds_names( self, builds ):
         base_path = os.path.join( self._out_dir, 'builds' )
@@ -38,7 +36,6 @@ class AudioDownloader:
         
         logging.debug( 'Audio files of build names created' )
 
-
     def download_messages( self, messages ):
         base_path = os.path.join( self._out_dir, 'messages' )
         os.makedirs( base_path, exist_ok = True )
@@ -49,6 +46,17 @@ class AudioDownloader:
         
         logging.debug( 'Audio files of custom messages created' )
 
+    def filepath_of_status_all_ok( self ):
+        pass # TODO
+
+    def filepath_of_status_all_ok_long_time( self ):
+        pass # TODO
+
+    def filepath_of_status_all_unavailable( self ):
+        pass # TODO
+
+    def filepath_of_status_all_nok_long_time( self ):
+        pass # TODO
 
     def _download_audio( self, text, path, file_name ):
         mp3 = os.path.join( path, f'{file_name}.mp3' )

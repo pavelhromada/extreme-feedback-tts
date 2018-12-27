@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import time
 import logging
 import simpleaudio as sa
 
@@ -10,16 +11,23 @@ class AudioPlayer:
     '''Plays mp3 audio content.'''
 
     def __init__( self ):
-        pass
+        self._playlist = []
 
     def clear_playlist( self ):
-        pass # TODO
+        self._playlist.clear()
 
     def add_to_playlist( self, audio_paths ):
-        pass # TODO
+        self._playlist.append( audio_paths )
 
     def play_playlist( self ):
-        pass # TODO
+        for item in self._playlist:
+            if item.__class__.__name__ in ( 'list', 'tuple' ):
+                for sub_item in item:
+                    self._play( sub_item )
+            else:
+                self._play( item )
+
+            time.sleep( 1 ) # 1s pause between items
 
     def play_all_from_path( self, path ):
         for dirpath, _, files in os.walk( path ):
