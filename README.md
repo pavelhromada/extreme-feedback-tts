@@ -46,6 +46,13 @@ concrete configuration file, audio files are saved to *assets* sub-directory.
 
 You can define some audio messages by your own in definition of configuration file.
 
+## GUI output
+
+GUI is optional and by default is disabled. You can enable it by command line option. Check
+the usage above.
+
+![Alt text](screenshot.png?raw=true "GUI")
+
 # Configuration file structure definition
 
 Sample configuration:

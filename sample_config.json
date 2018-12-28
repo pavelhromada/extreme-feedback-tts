@@ -3,40 +3,64 @@
     "tts_lang": "sk",
     "builds": [
         {
-            "build_type_id": "FcsGrundsatz_FcsDevicesQtFrontendSuite_Trunk_Documentation",
+            "build_type_id": "TeamCity_buildId_of_build_job1",
             "branch": "master",
-            "tts_name": "ap kor dokumentacia",
-            "gui_name": "AppCore docu"
+            "tts_name": "Library 1",
+            "gui_name": "Library 1"
         },
         {
-            "build_type_id": "FcsGrundsatz_FcsDevicesQtFrontendSuite_Trunk_AppcoreLib_BuildWin32",
+            "build_type_id": "TeamCity_buildId_of_build_job2",
             "branch": "master",
-            "tts_name": "AppCore Win32",
-            "gui_name": "AppCore Win32"
+            "tts_name": "Library 2",
+            "gui_name": "Library 2"
         },
         {
-            "build_type_id": "FcsGrundsatz_FcsDevicesQtFrontendSuite_Trunk_AppcoreLib_BuildWin32",
+            "build_type_id": "TeamCity_buildId_of_build_job3",
             "branch": "master",
-            "tts_name": "AppCore Win32",
-            "gui_name": "AppCore"
+            "tts_name": "Library 3",
+            "gui_name": "Library 3"
         },
         {
-            "build_type_id": "FcsGrundsatz_FcsDevicesQtFrontendSuite_Trunk_AppcoreLib_BuildWin32",
+            "build_type_id": "TeamCity_buildId_of_build_job4",
             "branch": "master",
-            "tts_name": "AppCore Win32",
-            "gui_name": "AppCore fvfd dfvd"
+            "tts_name": "Documentation",
+            "gui_name": "Documentation"
         },
         {
-            "build_type_id": "FcsGrundsatz_FcsDevicesQtFrontendSuite_Trunk_AppcoreLib_BuildWin32",
+            "build_type_id": "TeamCity_buildId_of_build_job5",
             "branch": "master",
-            "tts_name": "AppCore Win32",
-            "gui_name": "AppCore ad df"
+            "tts_name": "App X",
+            "gui_name": "App X"
         },
         {
-            "build_type_id": "FcsGrundsatz_FcsDevicesQtFrontendSuite_Trunk_AppcoreLib_BuildWin32",
+            "build_type_id": "TeamCity_buildId_of_build_job6",
             "branch": "master",
-            "tts_name": "AppCore Win32",
-            "gui_name": "AppCore fv fvdfvd dbg"
+            "tts_name": "App Y",
+            "gui_name": "App Y"
+        },
+        {
+            "build_type_id": "TeamCity_buildId_of_build_job7",
+            "branch": "master",
+            "tts_name": "App Z",
+            "gui_name": "App Z"
+        },
+        {
+            "build_type_id": "TeamCity_buildId_of_build_job8",
+            "branch": "master",
+            "tts_name": "Library 1 Linux",
+            "gui_name": "Library 1 Linux"
+        },
+        {
+            "build_type_id": "TeamCity_buildId_of_build_job9",
+            "branch": "master",
+            "tts_name": "Library 2 Linux",
+            "gui_name": "Library 2 Linux"
+        },
+        {
+            "build_type_id": "TeamCity_buildId_of_build_job10",
+            "branch": "master",
+            "tts_name": "Library 3 Linux",
+            "gui_name": "Library 3 Linux"
         }
     ],
     "users": [

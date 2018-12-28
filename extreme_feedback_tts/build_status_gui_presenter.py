@@ -13,7 +13,8 @@ class GuiPresenter( BuildStatusPresenter ):
 
     def __init__( self, config, fullscreen ):
         self._tk = Tk()
-        self._tk.geometry( '1000x600+0+0')
+        self._tk.title( 'Build status' )
+        self._tk.geometry( '800x600+0+0')
         self._tk.attributes( '-fullscreen', fullscreen )
         self._tk.resizable( False, False )
         self._tk[ 'background' ] = '#181818'
