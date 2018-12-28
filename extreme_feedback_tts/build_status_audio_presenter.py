@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import logging
-from .audio_downloader import AudioDownloader
+from .audio_assets import AudioAssets, Message
 from .audio_player import AudioPlayer
 from .build_status_enum import BuildStatus
 from .build_status_presenter import BuildStatusPresenter
@@ -17,13 +17,13 @@ class AudioPresenter( BuildStatusPresenter ):
         self._all_ok_counter    = 0
         self._all_nok_counter   = 0
         self._player            = AudioPlayer()
-        self._audio             = AudioDownloader( config.assets_dir(), config.tts_lang() )
+        self._assets            = AudioAssets( config.assets_dir(), config.tts_lang() )
 
         logging.debug( 'Audio presenter: Downloading audio files ...' )
 
-        self._audio.download_users_names( config.users() )
-        self._audio.download_builds_names( config.builds() )
-        self._audio.download_messages( config.tts_messages() )
+        self._assets.download_users_names( config.users() )
+        self._assets.download_builds_names( config.builds() )
+        self._assets.download_messages( config.tts_messages() )
 
     def update( self, build_statuses ):
         logging.debug( 'Updating audio status ...' )
@@ -38,25 +38,25 @@ class AudioPresenter( BuildStatusPresenter ):
 
             if self._is_first_update or self._all_ok_counter == 0:
                 self._all_ok_counter = 1
-                self._player.add_to_playlist( self._audio.filepath_of_status_all_ok() )
-                # play status_all_ok
+                message = self._assets.message_path( Message.StatusAllOk )
+                self._player.add_to_playlist( message )
             elif self._all_ok_counter == 5:
                 self._all_ok_counter = 1
-                self._player.add_to_playlist( self._audio.filepath_of_status_all_ok_long_time() )
-                # play status_all_ok_long_time
+                message = self._assets.message_path( Message.StatusAllOkLongTime )
+                self._player.add_to_playlist( message )
             else:
                 self._all_ok_counter += 1
         elif all_unavailable:
             self._all_ok_counter = 0
             self._all_nok_counter = 0
-            self._player.add_to_playlist( self._audio.filepath_of_status_all_unavailable() )
-            # play status_all_unavailable
+            message = self._assets.message_path( Message.StatusAllUnavailable )
+            self._player.add_to_playlist( message )
         else:
             self._all_nok_counter += 1
             if self._all_nok_counter == 5:
-                self._player.add_to_playlist( self._audio.filepath_of_status_all_nok_long_time() )
+                message = self._assets.message_path( Message.StatusAllNokLongTime )
+                self._player.add_to_playlist( message )
                 self._all_nok_counter = 0
-                # play status_all_nok_long_time
 
             for info in build_statuses:
                 self._process_build_status( info )
@@ -68,11 +68,32 @@ class AudioPresenter( BuildStatusPresenter ):
         if not info.status_has_changed():
             return
 
+        build_name_path = self._assets.build_path( info.build_id() )
+        items = []
+
         if info.status() == BuildStatus.Success:
-            pass # play build name + status_ok_again
+            items = [ 
+                build_name_path,
+                self._assets.message_path( Message.StatusOkAgain )
+            ]
         elif info.status() == BuildStatus.Failed:
-            pass # play build name + status_nok + committer name + you_broke_build
+            items = [
+                build_name_path,
+                self._assets.message_path( Message.StatusNok ),
+                self._assets.user_path( info.last_commit_by() ),
+                self._assets.message_path( Message.YouBrokeBuild )
+            ]
         elif info.status() == BuildStatus.Running:
-            pass # play build name + status_sunning + committer name + you_committed
+            items = [
+                build_name_path,
+                self._assets.message_path( Message.StatusRunning ),
+                self._assets.user_path( info.last_commit_by() ),
+                self._assets.message_path( Message.YouCommitted )
+            ]
         else:
-            pass # play status_unavailable + build name
+            items = [ 
+                self._assets.message_path( Message.StatusUnavailable ),
+                build_name_path
+            ]
+            
+        self._player.add_to_playlist( items )

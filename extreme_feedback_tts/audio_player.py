@@ -24,6 +24,7 @@ class AudioPlayer:
             if item.__class__.__name__ in ( 'list', 'tuple' ):
                 for sub_item in item:
                     self._play( sub_item )
+                    time.sleep( 0.15 ) # 150ms pause between sub-items
             else:
                 self._play( item )
 

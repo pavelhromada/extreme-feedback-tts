@@ -37,6 +37,9 @@ class BuildInfo:
     def last_commit_by( self ):
         return self._committer
 
+    def build_id( self ):
+        return self._config[ 'build_type_id' ]
+
     def brach( self ):
         return self._config[ 'branch' ]
 

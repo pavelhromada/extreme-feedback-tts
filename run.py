@@ -33,7 +33,7 @@ def parse_arguments():
 
 def configure_logging( enable_logs ):
     if enable_logs:
-        logging.basicConfig( level = logging.INFO )
+        logging.basicConfig( level = logging.DEBUG )
     else:
         logging.disable( sys.maxsize )
 
@@ -42,7 +42,10 @@ if __name__ == "__main__":
     args = parse_arguments()
     configure_logging( args[ 'debug' ])
 
-    app = ExtremeFeedbackApp( args[ 'config' ],
-                              args[ 'gui' ],
-                              args[ 'fullscreen' ])
-    app.run()
+    try:
+        app = ExtremeFeedbackApp( args[ 'config' ],
+                                  args[ 'gui' ],
+                                  args[ 'fullscreen' ])
+        app.run()
+    except Exception:
+        logging.exception( 'Application exited prematurely' )
