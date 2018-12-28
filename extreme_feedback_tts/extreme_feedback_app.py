@@ -51,4 +51,4 @@ class ExtremeFeedbackApp:
             for presenter in self._presenters:
                 presenter.update( self._builds_info )
 
-            time.sleep( 20 ) # 20s is refresh period
+            time.sleep( 30 ) # 30s is refresh period
