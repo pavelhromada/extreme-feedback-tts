@@ -1,6 +1,3 @@
-# **WORK IN PROGRESS**
-Proper audio output logic is missing so far.
-
 # extreme-feedback-tts
 
 Yet another extreme feedback "lava lamp". This one is written in python and provides GUI and
@@ -75,7 +72,7 @@ Sample configuration:
         "status_all_unavailable": "I have issues to retrieve info about builds. Put an eye on it.",
         "status_all_ok": "All builds are building successfully. Keep it like this.",
         "status_all_ok_long_time": "Everything is fine for a long time. Thumbs up guys.",
-        "status_all_nok_long_time": "Houston, we have a proble for some time. Check it immediately.",
+        "status_all_nok_long_time": "Houston, we have a problem for some time. Check it immediately.",
         "status_unavailable": "Unable to get info about",
         "status_ok_again": "is okay again.",
         "status_nok": "build has failed.",
