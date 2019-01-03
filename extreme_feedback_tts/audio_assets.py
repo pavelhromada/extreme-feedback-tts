@@ -68,8 +68,8 @@ class AudioAssets:
             return  old_string
             
         for user in users:
-            user_name = user[ 'team_city_name' ].replace( ' ', '' )
-            name = replace_special_chars( user_name, '<>:"/\\|?*', '_' )
+            user_name = user[ 'team_city_name' ]
+            name = replace_special_chars( user_name, ' <>:"/\\|?*', '_' )
             path = self._download_audio( user[ 'tts_name' ], base_path, name )
             self._user_names_audio[ user[ 'team_city_name' ]] = path
         
