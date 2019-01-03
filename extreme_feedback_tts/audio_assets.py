@@ -62,9 +62,15 @@ class AudioAssets:
         os.makedirs( base_path, exist_ok = True )
         logging.debug( f'Creating user names audio files in {base_path}' )
         
+        def replace_special_chars( old_string, to_replace_chars, new_string ):
+            for c in to_replace_chars:
+                old_string = old_string.replace( c, new_string )
+            return  old_string
+            
         for user in users:
             user_name = user[ 'team_city_name' ].replace( ' ', '' )
-            path = self._download_audio( user[ 'tts_name' ], base_path, user_name )
+            name = replace_special_chars( user_name, '<>:"/\\|?*', '_' )
+            path = self._download_audio( user[ 'tts_name' ], base_path, name )
             self._user_names_audio[ user[ 'team_city_name' ]] = path
         
         logging.debug( 'Audio files of users created' )
@@ -92,13 +98,22 @@ class AudioAssets:
         logging.debug( 'Audio files of custom messages created' )
 
     def user_path( self, user ):
-        return self._user_names_audio[ user ] if user in self._user_names_audio else None
+        path = self._user_names_audio[ user ] if user in self._user_names_audio else None
+        if not path:
+            logging.warning( f'No audio for user {user}' )
+        return path
         
     def build_path( self, build_id ):
-        return self._builds_audio[ build_id ] if build_id in self._builds_audio else None
+        path = self._builds_audio[ build_id ] if build_id in self._builds_audio else None
+        if not path:
+            logging.warning( f'No audio for build name {build_id}' )
+        return path
 
     def message_path( self, message ):
-        return self._messages_audio[ message ] if message in self._messages_audio else None
+        path = self._messages_audio[ message ] if message in self._messages_audio else None
+        if not path:
+            logging.warning( f'No audio for message {message}' )
+        return path
 
     def _download_audio( self, text, path, file_name ):
         '''Converts text via Google text-to-speech and saves it as wav file.

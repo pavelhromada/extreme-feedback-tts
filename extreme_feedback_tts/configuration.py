@@ -41,5 +41,5 @@ class Configuration:
         return self._build_server_url
 
     def _load_config_file( self, file_path ):
-            with open( file_path ) as json_file:
+            with open( file_path, encoding = 'utf-8' ) as json_file:
                 return json.load( json_file )
